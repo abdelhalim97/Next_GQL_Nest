@@ -11,12 +11,16 @@ module.exports = {
         'sec':({opacityValue})=>`rgba(var(--color-text-sec),${opacityValue})`,
         'th':({opacityValue})=>`rgba(var(--color-text-th),${opacityValue})`,
         'fourth':({opacityValue})=>`rgba(var(--color-text-fourth),${opacityValue})`,
+        'back':({opacityValue})=>`rgba(var(--color-text-back),${opacityValue})`,
+
     },
     backgroundColor:{
       'st':({opacityValue})=>`rgba(var(--color-text-st),${opacityValue})`,
       'sec':({opacityValue})=>`rgba(var(--color-text-sec),${opacityValue})`,
       'th':({opacityValue})=>`rgba(var(--color-text-th),${opacityValue})`,
       'fourth':({opacityValue})=>`rgba(var(--color-text-fourth),${opacityValue})`,
+      'back':({opacityValue})=>`rgba(var(--color-text-back),${opacityValue})`,
+
     }
     },
   },

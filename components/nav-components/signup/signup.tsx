@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {Props,FormValues} from './signup.types'
 import {schema} from './signup.schema'
-import { Error, InputCustom } from '../../reusble';
+import { Error, InputCustom } from '../../reusable';
  const SignUp = ({openSignupModal,setOpenSignupModal,setOpenSigninModal}:Props) => {
     const handleClose = () =>{setOpenSignupModal(false)}
     const { register, handleSubmit,  formState: { errors } } = useForm<FormValues>({

@@ -1,2 +1,3 @@
 import  Nav  from "./nav";
-export {Nav}
+import Footer from './footer'
+export { Nav,Footer }

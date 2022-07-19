@@ -3,23 +3,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button } from '@mui/material'
 import Link from 'next/link'
 import React, { useState } from 'react'
-import { Search } from '../auth/search/search'
-import SignIn from '../auth/signin/signin'
-import SignUp from '../auth/signup/signup'
+import MenuNav from '../nav-components/menu-nav'
+import Search from '../nav-components/search'
+import SignIn from '../nav-components/signin/signin'
+import SignUp from '../nav-components/signup/signup'
 
  const Nav = () => {
   const [openSignupModal, setOpenSignupModal] = useState<boolean>(false)
   const [openSiginModal, setOpenSigninModal] = useState<boolean>(false)
   const [state, setState] = useState(false)
-  // const navigate = useNavigate()
   const navigation = [
-    //   { title: "Profile", path: "/" },
-      { title: "Browse", path: "/directory" },
+      { id:0, title: "Following", path: "/directory/following" },
+      { id:1, title: "Browse", path: "/directory" },
   ]
 
   return (
-    <nav className="bg-st w-full border-b  md:static ">
-    <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
+    <header className="bg-st w-full md:static z-50">
+    <nav className="items-center mx-auto md:flex h-full">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
               <Link href="/">
                 <a>
@@ -27,7 +27,7 @@ import SignUp from '../auth/signup/signup'
                 </a>
               </Link>
             <div className="md:hidden">
-                <button className="text-gray-700 outline-none p-2 rounded-md focus:border-gray-400 focus:border"
+                <button className="text-sec outline-none p-2 rounded-md"
                     onClick={() => setState(!state)}
                 >
                     {
@@ -45,35 +45,35 @@ import SignUp from '../auth/signup/signup'
             </div>
         </div>
         <div className={`flex-1 justify-center w-full pb-3 mt-8 md:flex md:pb-0 md:mt-0 ${ state ? 'block' : 'hidden'}`}>
-            <ul className="justify-start items-center space-y-8 md:flex md:space-x-6 md:space-y-0 md:w-5/6 w-full ml-0 md:ml-5">
+            <ul className="md:flex justify-around items-center space-y-8 md:space-x-6 md:space-y-0 md:w-5/6 ml-0 ">
+            <div className='md:ml-6 ml-0 md:w-3/12 lg:w-1/5 w-full items-center block md:flex justify-between'>
                 {
-                    navigation.map((item, idx) => {
-                        return (
-                          <li key={idx} className="text-sec hover:text-base grid justify-center font-d font-bold">
-                              <Link href={item.path}>
-                                <a>
-                                    { item.title }
-                                </a>
-                              </Link>
-                                 
-                          </li>
-                        )
-                    })
-                }
-                    <Search/>
+                          navigation.map((item) => {
+                              return (
+                                <li key={item.id} className="text-sec hover:text-base grid justify-center">
+                                    <Link href={item.path}>
+                                        <a className={`text-sec font-bold ${item.id===0 && 'md:mr-3 mt-0 '} ${item.id!==0 && 'md:mt-0 mt-5 '}`}>
+                                        {item.title}
+                                        </a>
+                                    </Link>
+                                </li>
+                              )
+                          })
+                      }
+            </div>
+            <Search/>
+            <div></div>
             </ul>
-            <div className='md:w-1/6 mt-8 md:mt-0 flex justify-around w-full'>
+            <div className='flex flex-col md:flex-row md:w-2/6 mt-8 md:mt-0  justify-around w-4/6 mx-auto'>
               <Button className='bg-th text-fourth hover:bg-sec text-md px-2 rounded-sm' onClick={()=>setOpenSignupModal(true)}>Sign up</Button>
               <SignUp openSignupModal={openSignupModal} setOpenSigninModal={setOpenSigninModal} setOpenSignupModal={setOpenSignupModal}/>
               <Button className='bg-sec text-fourth hover:bg-sec text-md px-2 rounded-sm' onClick={()=>setOpenSigninModal(true)}>Sign in</Button>
               <SignIn openSiginModal={openSiginModal} setOpenSignupModal={setOpenSignupModal} setOpenSigninModal={setOpenSigninModal}/>
+              <div className='mx-auto'><MenuNav/></div>
             </div>
         </div>
-    </div>
-</nav>
-  // <nav className='bg-st w-full'>
-
-  // </nav>
+    </nav>
+</header>
   )
 }
 export default Nav
