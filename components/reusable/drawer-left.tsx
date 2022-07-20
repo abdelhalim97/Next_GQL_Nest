@@ -84,8 +84,9 @@ const theme = useTheme();
     <Box sx={{ display: 'flex' }} >
       <CssBaseline />
       <Drawer variant="permanent" open={open} PaperProps={{
-    sx: {backgroundColor: '#1F1F23',color: "#fff",top:70}
-    }}>
+    sx: {backgroundColor: '#1F1F23',color: "#fff",zIndex:51,top:72,maxHeight:'84vh'},
+    }
+    }>
         <div className='flex items-center font-bold text-sm'>
         {open &&<div className='ml-5'>FOLLOWED CHANNELS</div>}
       {open ?
@@ -102,11 +103,11 @@ const theme = useTheme();
         </DrawerHeader>
         }
         </div>
-      
-        <Divider />
+        <Divider className='bg-fourth'/>
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+          {['Inbox', 'Starred', 'Send email', 'Drafts','Inbox', 'Starred', 'Send email', 'Drafts',
+          ].map((text, index) => (
+            <ListItem key={index} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -128,7 +129,7 @@ const theme = useTheme();
             </ListItem>
           ))}
         </List>
-        <Divider />
+        <Divider className='bg-fourth'/>
         <List>
           {['All mail', 'Trash', 'Spam'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
@@ -152,10 +153,11 @@ const theme = useTheme();
               </ListItemButton>
             </ListItem>
           ))}
+          {/* <Box sx={{height:40}}/> */}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-      <DrawerHeader></DrawerHeader>
+      <Box component="main" sx={{ flexGrow: 1,height:'100%' }}>
+      {/* <DrawerHeader></DrawerHeader> */}
         {children}
       </Box>
     </Box>

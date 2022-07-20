@@ -18,12 +18,12 @@ import SignUp from '../nav-components/signup/signup'
   ]
 
   return (
-    <header className="bg-st w-full md:static z-50">
+    <header className="bg-st w-full md:static z-50 fixed">
     <nav className="items-center mx-auto md:flex h-full">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
               <Link href="/">
                 <a>
-                <FontAwesomeIcon icon={faTwitch} className='text-sec text-2xl ' />
+                <FontAwesomeIcon icon={faTwitch} className='text-fourth hover:text-sec text-2xl ml-2'/>
                 </a>
               </Link>
             <div className="md:hidden">
@@ -50,9 +50,9 @@ import SignUp from '../nav-components/signup/signup'
                 {
                           navigation.map((item) => {
                               return (
-                                <li key={item.id} className="text-sec hover:text-base grid justify-center">
+                                <li key={item.id} className="text-fourth hover:text-sec grid justify-center">
                                     <Link href={item.path}>
-                                        <a className={`text-sec font-bold ${item.id===0 && 'md:mr-3 mt-0 '} ${item.id!==0 && 'md:mt-0 mt-5 '}`}>
+                                        <a className={`font-bold ${item.id===0 && 'md:mr-3 mt-0 '} ${item.id!==0 && 'md:mt-0 mt-5 '}`}>
                                         {item.title}
                                         </a>
                                     </Link>
@@ -69,7 +69,7 @@ import SignUp from '../nav-components/signup/signup'
               <SignUp openSignupModal={openSignupModal} setOpenSigninModal={setOpenSigninModal} setOpenSignupModal={setOpenSignupModal}/>
               <Button className='bg-sec text-fourth hover:bg-sec text-md px-2 rounded-sm' onClick={()=>setOpenSigninModal(true)}>Sign in</Button>
               <SignIn openSiginModal={openSiginModal} setOpenSignupModal={setOpenSignupModal} setOpenSigninModal={setOpenSigninModal}/>
-              <div className='mx-auto'><MenuNav/></div>
+              <div className='mx-auto md:mx-0'><MenuNav/></div>
             </div>
         </div>
     </nav>

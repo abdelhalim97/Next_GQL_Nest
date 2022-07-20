@@ -12,6 +12,7 @@ a {
 * {
   box-sizing: border-box;
 }
+.div-on-top{z-index: 999;}
 ::-webkit-scrollbar {
   width: 10px;
 }
